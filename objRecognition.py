@@ -27,7 +27,6 @@ def drawRect():
         box=np.int0(cv2.boxPoints(area))
         cv2.drawContours(o,[box],0,(0,255,0),2)
         cv2.putText(o,'Obj'+str(i),(x+5,y+5),cv2.FONT_HERSHEY_SIMPLEX,0.5,(255,255,0),1)
-    return elements[1:,:]
     
 def processImg():
     _,orig=cap.read()
@@ -54,6 +53,7 @@ thrs=230
 while(True):
     try:
         o,d,c=processImg()
+	drawRect()
         cv2.imshow('Detected edges',o)
         cv2.imshow('Frame differencing into binary',d)
         wK=cv2.waitKey(5)
